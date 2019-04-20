@@ -4,25 +4,25 @@
 #include<algorithm>
 using namespace std;
 const int maxn=500005;
-int c[maxn],n;//´æÊ÷×´Êı×é,n±íÊ¾µãÊı
-int aa[maxn];//´æÀëÉ¢»¯ºóµÄÊı×é
+int c[maxn],n;//å­˜æ ‘çŠ¶æ•°ç»„,nè¡¨ç¤ºç‚¹æ•°
+int aa[maxn];//å­˜ç¦»æ•£åŒ–åçš„æ•°ç»„
 
 struct node{
     int val,order;
 };
-node in[maxn];//´æÔ­Ê¼Êı¾İ
+node in[maxn];//å­˜åŸå§‹æ•°æ®
 
 int lowbit(int x){
     return x&(-x);
-}//&Î»ÔËËã£¬-xÊÇ°ÑxÈ¡·´È»ºó¼ÓÒ»
+}//&ä½è¿ç®—ï¼Œ-xæ˜¯æŠŠxå–åç„¶ååŠ ä¸€
 
-void update(int x,int val){//µ¥µãĞŞ¸Ä
+void update(int x,int val){//å•ç‚¹ä¿®æ”¹
     for(int i=x;i<=n;i+=lowbit(i)){
         c[i]+=val;
     }
 }
 
-int getsumm(int x){//ÇóºÍ£¬Çø¼ä[1,x]µÄºÍ
+int getsumm(int x){//æ±‚å’Œï¼ŒåŒºé—´[1,x]çš„å’Œ
     int temp=0;
     for(int i=x;i;i-=lowbit(i)){
         temp+=c[i];
@@ -33,7 +33,7 @@ int getsumm(int x){//ÇóºÍ£¬Çø¼ä[1,x]µÄºÍ
 bool cmp(node a,node b){
     return a.val>b.val;
 }
-//ÇóÄæĞò¶Ô
+//æ±‚é€†åºå¯¹
 int main(){
     while(scanf("%d",&n)==1&&n){
         for(int i=1;i<=n;i++){
@@ -47,7 +47,7 @@ int main(){
         long long ans=0;
         for(int i=1;i<=n;i++){
             update(aa[i],1);
-            ans+=getsumm(aa[i])-1;//Æä±¾Éí±»¶àËãÁËÒ»´Î
+            ans+=getsumm(aa[i])-1;//å…¶æœ¬èº«è¢«å¤šç®—äº†ä¸€æ¬¡
         }
         cout<<ans<<endl;
     }
